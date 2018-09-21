@@ -1,4 +1,4 @@
-#Create the pre-defined song values and empty variables...NOT SURE IF LISTS OR TUPLES ARE BETTER...Proper names not used so each starting letter would be unique
+#Create the pre-defined song values and empty variables...Correct names not used so each starting letter would be unique
 
 numbers = (1 ,2 ,3 ,4 ,5 ,6 ,7 ,8 ,9 ,10 ,11 ,12 ,13 ,14 ,15 ,16 ,17 ,18 )
 
@@ -29,70 +29,63 @@ code = [m1, m2, m3, m4, m5, m6, m7, m8, m9, m1 + m0, m1 + m1, m1 + m2, m1 + m3, 
 
 ##Other ideas: piglatin, japanese, spanish, prime, tau, e, ...
 
-sing = 'y'
-
-##Now to the good stuff......NEED TO ADD INVALID ENTRY CATCHES
+##NEED TO ADD INVALID ENTRY CATCHES
 
 print("Hello, let's sing a song that everybody loves!\n")
-
-while sing == 'y':       
-
+sing = 'y'
+while sing == 'y':
+    user = []
     variation = input ("Please input what variation you wish to perform be entering 'numbers', 'letters', 'roman', 'military', 'pi', 'german', 'code', or 'user' to make your own song: \n").lower().strip()
 
 ##Seeming silly switching of strings to list types
-    if variation == "numbers":
+    if variation == "numbers" or variation == "n":
         variation = numbers
-    elif variation == "letters":
+    elif variation == "letters" or variation == "l":
         variation = letters
-    elif variation == "roman":
+    elif variation == "roman" or variation == "r":
         variation = roman
-    elif variation == "military":
+    elif variation == "military" or variation == "m":
         variation = military
-    elif variation == "pi":
+    elif variation == "pi" or variation == "p":
         variation = pi
-    elif variation == "german":
+    elif variation == "german" or variation == "g":
         variation = german
-    elif variation == "code":
+    elif variation == "code" or variation == "c":
         variation = code
+    elif variation == "user" or variation == "u":
+        while len(user) < 18:
+            user.append(input ("Enter a word: "))
 
-#Create a function to build a list of user defined inputs (while len < 18)
-
-#    user = []
-#    if variation == "user":
-#       user_def ()
-
-#User input to select the song pattern...BROKEN
-##    pattern = input ("\nNow please tell me what pattern to use by entering 'forward', 'backward', 'even', or 'odd':\n")
+#User input to select the song pattern
+    pattern = input ("\nNow please tell me what pattern to use by entering 'forward', 'backward', 'even', or 'odd':\n")
 
     print ("\nHere we go: \n\n")
 
-#Now to create a function to print the desired then the variation and pattern to see if it works.
-#Instead of printing, what is really needed is to set the value of a new object so it can then be displayed in the final assembled song.
-#Assembled order should be modified var (forward, backward, skipping first or second)
-
-##THIS IS BROKEN....Use pattern.startswith()?...Also, might be better to seperate forward/backward and even/odd choices.
-    if pattern == 'forward' or 'f':
-        varpat = variation
-    elif pattern == 'backward' or 'b':
-        varpat = variation[::-1]
-    elif pattern == 'odd' or 'o':
-        varpat = variation[::2]
-    elif pattern == 'even' or 'e':
-        varpat = variation[1::]
-
-#Asemble the song
+#Asemble the song...IMPROVE FORMAT SO OUTPUT IS EASIER TO READ
 
     song1 = "Oh, there are "
-    song2 = " wheels on a big rig truck!\n\n"
-    print (song1, varpat, song2)
+    song2 = " wheels on a big rig truck!"
+    a = song1, variation[::], song2
+    b = song1, variation[::-1], song2
+    c = song1, variation[::2], song2
+    d = song1, variation[1::2], song2
 
-    sing = input('Would you like to sing it again? (y/n) ').lower()
+##Use pattern.startswith()?...Also, might be better to seperate forward/backward and even/odd choices.  
+    if pattern == 'forward' or pattern == 'f':
+        print (a)
+    elif pattern == 'backward' or pattern == 'b':
+        print (b)
+    elif pattern == 'odd' or pattern == 'o':
+        print (c)
+    elif pattern == 'even' or pattern == 'e':
+        print (d)
+
+    sing = input('\n\nWould you like to sing it again? (y/n) ').lower()
+
+## This is the end of the while loop
 else:
    print ("\nOK, Goodbye!")
 
-#Create function and pass it the variable for it to fill and then send back to the script
-#def user_def (user)
-##           while len(user) < 18:
-###               user.append [input "Enter a word: "]
+
             
            
